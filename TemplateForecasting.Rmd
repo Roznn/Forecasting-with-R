@@ -1,0 +1,173 @@
+---
+title: "Time series *beer* with Holt-Winters algorithms"
+author: "Rozenn Dahyot - https://www.scss.tcd.ie/Rozenn.Dahyot/ "
+date: " 2019 "
+output: 
+   html_document: default
+   
+---
+
+```{r setup, include=FALSE,warning=FALSE, message=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+The time series *beer* is in the fma package:
+```{r message=FALSE}
+# make sure to type in Rstudio console: install.packages("fma")
+require("fma")
+beer
+
+```
+Description of beer: 
+Monthly Australian beer production: Jan 1991 to Aug 1995.
+
+
+## Visualisation of time series
+
+
+### Time plot
+
+You can also embed plots, for example the time plot:
+
+```{r message=FALSE }
+plot(beer)
+```
+
+
+### Time plot with ACF and PACF
+
+The ACF and PACF can be displayed with the time plot:
+
+
+```{r message=FALSE}
+tsdisplay(beer,lag.max=70)
+```
+
+Other packages exist for visualisation.  For instance you may prefer 
+using packages *ggplot2* 
+
+
+```{r message=FALSE}
+# make sure to type in Rstudio console: install.packages("ggplot2")
+require(ggplot2)
+ggtsdisplay(beer,lag.max = 70)
+```
+
+The timeplot shows seasonality, no real trend and some noise.  
+For the time series *beer*, the ACF displays maxima at lags 12, 24, 36 (...) characteristic of seasonality with a period of 12 months (as it is  monthly data).
+
+
+
+**Exercise:** Show how to use the R functions *acf()* and *pacf()* for the time series *beer*. Explain the the differences with *tsdisplay()* (hint: look at the x-axis)
+
+**Exercise:** Comment on the information provided by the PACF for the time series *beer*.
+
+
+### seasonplot()
+
+The season plot confirms there is no trend.
+```{r message=FALSE}
+seasonplot(beer)
+```
+
+### Function *ts()*
+
+Note that *beer* time series is stored in *fma* package explicitly with this information of periodicity 12. 
+For the *mink* time series which has no frequency information stored, then you will need to use the function *ts* to indicate a period (if you see one!) for this time series e.g.:
+
+```{r message=FALSE}
+tsdisplay(ts(mink,freq=10))
+seasonplot(ts(mink,freq=10))
+```
+
+
+### Function *decompose()*
+
+Note that the function *decompose* can be visually misleading:
+
+```{r message=FALSE}
+plot(decompose(beer))
+```
+
+It may look like you have trend!
+
+**Exercise: **Read chapter 6 at  
+https://otexts.com/fpp2/decomposition.html .
+What other R function can be used for decomposing time series  ?
+
+## Fitting Holt Winters algorithms
+
+
+Only seasonal algorithms are appropriate for fitting the time series *beer*.
+
+```{r message=FALSE}
+HoltWinters(beer, seasonal="additive")$SSE
+HoltWinters(beer, seasonal="multiplicative")$SSE
+```
+
+Using SSE (Sum of Square Errors), the seasonal Holt Winters algorithm (SHWx) algorithm fits best the time series *beer* (lowest SSE). 
+
+**Exercise:** How to compute MAPE with R ? 
+Would the same Holt-Winters algorithm  selected with MAPE ?
+
+## Computing forecasts 
+
+
+```{r message=FALSE}
+HoltWinters(beer, seasonal="multiplicative")
+predict(HoltWinters(beer, seasonal="multiplicative"))
+```
+
+Using the formula
+$$
+F_{n+k} = (L_n+k \times b_n)\times S_{n+k-s}
+$$
+with $k=1$, $s=12$ (frequency for beer data), and with the notation used in the lecturenotes https://www.scss.tcd.ie/Rozenn.Dahyot/ST3010/RzDTimeSeriesForecasting.pdf
+(chapter 8), the prediction can be computed (instead of using the R command *predict()*) as follow
+
+```{r message=FALSE}
+k=1  # prediction computed 1 month ahead
+s=12 # frequency 12 month 
+Ln=HoltWinters(beer, seasonal="multiplicative")$coefficients[1]
+bn=HoltWinters(beer, seasonal="multiplicative")$coefficients[2]
+snk= HoltWinters(beer, seasonal="multiplicative")$coefficients[3]
+(Ln+k*bn)*snk
+```
+
+Likewise prediction can be computed for $k=5$ months ahead from the last observation of the time series *beer* : 
+
+```{r message=FALSE}
+k=5  # prediction computed 1 month ahead
+s=12 # frequency 12 month 
+Ln=HoltWinters(beer, seasonal="multiplicative")$coefficients[1]
+bn=HoltWinters(beer, seasonal="multiplicative")$coefficients[2]
+snk= HoltWinters(beer, seasonal="multiplicative")$coefficients[7]
+(Ln+k*bn)*snk
+predict(HoltWinters(beer, seasonal="multiplicative"),n.ahead=5)[5]
+```
+
+
+### Using *forecast()*
+
+```{r message=FALSE}
+forecast(HoltWinters(beer, seasonal="multiplicative"),h=1)
+```
+
+```{r message=FALSE}
+plot(forecast(HoltWinters(beer, seasonal="multiplicative")))
+```
+
+**Exercise:** Explain how the R function  *forecast()* relates to *predict()*. Explain how  prediction intervals are computed. 
+
+
+
+## Other questions
+
+**Exercise:** What Warnings should one be aware of about using  the computed forecasts with Holt Winters algorithms ? What hypotheses are made when computing  the prediction intervals associated with the forecasts ?
+
+
+**Exercise:** Read *The Holt-Winters Approach to Exponential Smoothing: 50 Years Old and Going Strong* by Paul Goodwin in FORESIGHT Fall 2010 (  http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.401.2999&rep=rep1&type=pdf
+). Explain how Holt-Winters algorithms have been extended ?
+
