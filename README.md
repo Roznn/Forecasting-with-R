@@ -1,5 +1,5 @@
 # Forecasting-with-R
-Rmd for files for teaching forecasting 
+Rmd file for teaching forecasting 
 
 
 
