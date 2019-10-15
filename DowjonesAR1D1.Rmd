@@ -1,0 +1,108 @@
+---
+title: "Dowjones time series with ARIMA"
+author: "Rozenn Dahyot - https://www.scss.tcd.ie/Rozenn.Dahyot/"
+date: "15 October 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## Visualisation of  *dowjones* time series
+
+
+```{r,warning=FALSE, message=FALSE}
+require(fma)
+tsdisplay(dowjones)
+```
+
+*dowjones* time series
+
+
+- has a trend: the time plot shows an upward trend, the ACF shows very high correlations that are not decreasing quickly in amplitude as the lag $k$ increases; the PACF indicates   very high correlation between $y_t$ and $y_{t-1}$  but all other lags $k>1$ have PACF equivalent to 0.
+
+- but no seasonality,
+
+- and has a noise component.
+
+
+Fitting a constant model to the time series:
+$$
+y_t=c+\epsilon_t
+$$
+
+and visualising the residuals $\lbrace \epsilon_t\rbrace_{1,cdots,n}$ as follow:
+```{r,warning=FALSE, message=FALSE}
+require(fma)
+Arima(dowjones,order=c(0,0,0))
+tsdisplay(Arima(dowjones,order=c(0,0,0))$residuals)
+```
+
+
+## Removing the trend in  *dowjones* by differencing 
+
+To remove the trend, first order differencing is applied:
+
+```{r,warning=FALSE, message=FALSE}
+require(fma)
+Arima(dowjones,order=c(0,1,0))
+tsdisplay(Arima(dowjones,order=c(0,1,0))$residuals)
+```
+
+Note that the model fitted here is ($c=0$):
+$$
+y_t=y_{t-1}+\epsilon_t
+$$
+
+The PACF indicates PACF(1) to be non-zero whereas all other $PACF(k)=0$ for $k>1$. On the ACF a quick decrease to 0 value can be observed as $k$ increases.
+A AR(1) model can be suggested to fit this residuals.
+
+## Suggesting ARIMA(1,1,0)
+
+```{r,warning=FALSE, message=FALSE}
+require(fma)
+Arima(dowjones,order=c(1,1,0))
+tsdisplay(Arima(dowjones,order=c(1,1,0))$residuals)
+```
+
+Nothing more can be read with the time plot, ACF and PACF of the residuals.
+So the final model identified using visualisation is 
+$$
+(y_t-y_{t-1})=\phi_1 (y_{t-1}-y_{t-2}) +\epsilon_t
+$$
+
+## Using AIC and BIC
+
+Goodness of fit criteria associated with ARIMA models are given in the R output. 
+We note that starting with ARIMA(0,0,0) model, to  ARIMA(0,1,0) model, and concluding with  ARIMA(1,1,0) model then  we have:
+
+- a  decrease of BIC values (indicates an improvement in the goodness of fit of the model to the time series data)
+
+- a decrease of AIC values (indicates an improvement in the goodness of fit of the model to the time series data) 
+
+Using an automatic function in R a better model (based on AIC) is found ARIMA(1,1,1) (marginal improvement of AIC) but our ARIMA(1,1,0) is the best when BIC is chosen.   
+
+
+```{r,warning=FALSE, message=FALSE}
+require(fma)
+auto.arima(dowjones,trace=TRUE)
+
+Arima(dowjones,order=c(1,1,1))
+
+```
+
+**Exercises:** investigate R commands *Arima*, *arima*, *arima.sim*. Read https://otexts.com/fpp2/arima-r.html  
+
+
+## Forecasts and prediction intervals
+
+Once the best model is selected, it can be used for computing forecasts and prediction intervals:
+
+```{r,warning=FALSE, message=FALSE}
+require(fma)
+plot(forecast(Arima(dowjones,order=c(1,1,0)),h=20,level = c(80, 95)))
+forecast(Arima(dowjones,order=c(1,1,0)),h=20,level = c(80, 95))
+```
+
