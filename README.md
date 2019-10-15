@@ -4,6 +4,9 @@ Rmd file for teaching forecasting
 * some help is provided in the file HelpTemplateForecastingRmd.pdf .
 * The output file is in html format (TemplateForecasting.html) that is readable with any browser (e.g. Chrome / Internet explorer / Qwant/...).
 
+Other Rmd files
+* TSD.Rmd  time series differencing:  illustrations using arima.sim
+
 R file for teaching forecasting 
 * SimulationSeasonalArima.R allows to create seasonal arima time series and see their resulting ACF and PACF plots. 
 
