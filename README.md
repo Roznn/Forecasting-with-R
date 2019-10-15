@@ -1,8 +1,8 @@
 # Forecasting-with-R
 Rmd file for teaching forecasting 
-* TemplateForecasting.Rmd is an example of Rmd file that can be processed with RStudio 
-* some help is provided in the file HelpTemplateForecastingRmd.pdf .
+* TemplateForecasting.Rmd is an example of Rmd file that can be processed with RStudio. It is an example of analysis of a time series with Holt-Winters algorithms.  
 * The output file is in html format (TemplateForecasting.html) that is readable with any browser (e.g. Chrome / Internet explorer / Qwant/...).
+* some help is provided in the file HelpTemplateForecastingRmd.pdf 
 
 Other Rmd files
 * TSD.Rmd  time series differencing:  illustrations using arima.sim
