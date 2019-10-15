@@ -9,20 +9,10 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## White noise (0,0,0) 
-
-See White noise
-https://otexts.com/fpp2/wn.html
-
-```{r,warning=FALSE, message=FALSE}
-require(fma)
-tsdisplay(arima.sim(list(order = c(0,0,0)), n = 10000))
-```
 
 
-##  ARIMA(0,d=1,0)  Vs ARIMA(p=1,0,0)
 
-### Random Walk  ARIMA(0,d=1,0)
+## Random Walk  ARIMA(0,d=1,0)
 
 Note the simulated time series below with differencing  $d=1$: 
 
@@ -40,7 +30,7 @@ tsdisplay(arima.sim(list(order = c(0,1,0)), n = 10000))
 ```
 
 
-### AutoRegressive model ARIMA(p=1,0,0)
+### Comparison differencing ARIMA(0,d=1,0) with AutoRegressive model ARIMA(p=1,0,0)
 
 Note the simulated AR(1) time series by comparison : 
 
@@ -56,3 +46,36 @@ require(fma)
 tsdisplay(arima.sim(list(order = c(1,0,0), ar = 0.7), n = 10000))
 ```
 
+
+
+## Higher order differencing   
+
+
+### Example ARIMA(0,d=2,0)
+
+
+```{r,warning=FALSE, message=FALSE}
+require(fma)
+tsdisplay(arima.sim(list(order = c(0,2,0)), n = 10000))
+```
+
+
+### Example ARIMA(0,d=3,0)
+
+
+```{r,warning=FALSE, message=FALSE}
+require(fma)
+tsdisplay(arima.sim(list(order = c(0,3,0)), n = 10000))
+```
+
+
+
+## Remark: White noise ARIMA(0,0,0) 
+
+See White noise
+https://otexts.com/fpp2/wn.html
+
+```{r,warning=FALSE, message=FALSE}
+require(fma)
+tsdisplay(arima.sim(list(order = c(0,0,0)), n = 10000))
+```
