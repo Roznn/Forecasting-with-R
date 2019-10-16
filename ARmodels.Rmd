@@ -102,7 +102,7 @@ tsdisplay(arima.sim(n=10000,list(ar = c(0.8897,-0.5)), sd = sqrt(0.1796)))
 
 ## Yule Walker equations to estimate parameters
 
-Multiplying by $(y_{t-1}-\mu_y)$ the AR(2) model equation we have:
+- Multiplying by $(y_{t-1}-\mu_y)$ the AR(2) model equation we have:
 $$
 (y_t-\mu_y)\ (y_{t-1}-\mu_y)= (\phi_1 \ (y_{t-1}-\mu_y) +\phi_2 \ (y_{t-2}-\mu_y) +\epsilon_t) \ (y_{t-1}-\mu_y)
 $$
@@ -110,7 +110,7 @@ and taking the expectation:
 $$
 \underbrace{\mathbb{E}[(y_t-\mu_y)\ (y_{t-1}-\mu_y)]}_{=\gamma_1}= \phi_1 \ \underbrace{\mathbb{E}[(y_{t-1}-\mu_y)) \ (y_{t-1}-\mu_y)]}_{=\gamma_0=\sigma_y^2} +\phi_2 \ \underbrace{\mathbb{E}[(y_{t-2}-\mu_y) \ (y_{t-1}-\mu_y)]}_{=\gamma_1} +\underbrace{\mathbb{E}[\epsilon_t \ (y_{t-1}-\mu_y)]}_{=0}
 $$
-Multiplying by $(y_{t-1}-\mu_y)$ and taking the expectation leads to :
+- Multiplying by $(y_{t-2}-\mu_y)$ the AR(2) model equation and taking the expectation leads to :
 $$
 \gamma_2=\phi_1 \ \gamma_1 + \phi_2 \ \gamma_0
 $$
