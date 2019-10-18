@@ -19,7 +19,7 @@ $$
 with the following assumptions $\forall t$:
 
 - $\mathbb{E}[\epsilon_t]= 0$, $\mathbb{V}[\epsilon_t]= \sigma_{\epsilon}^2$ and the errors $\epsilon_{t_1}$ and $\epsilon_{t_2}$ are independent $\forall t_1\neq t_2$.
-- $\mathbb{E}[y_t]= \mu_y$ (stationary in mean). It can be shown $\mu_t=\frac{\phi_0}{1-\phi_1}$
+- $\mathbb{E}[y_t]= \mu_y$ (stationary in mean). It can be shown $\mu_y=\frac{\phi_0}{1-\phi_1}$
 - $\mathbb{V}[y_t]= \sigma_y^2$ (stationary in variance). It can be shown $\sigma_y^2=\frac{\sigma_{\epsilon}^2}{1-\phi_1^2}$ imposing the constraint $-1<\phi_1<1$.
 
 
