@@ -8,6 +8,7 @@ Other Rmd files
 * [TSD.Rmd](TSD.Rmd)  time series differencing:  illustrations using arima.sim
 * [ARmodels.Rmd](ARmodels.Rmd) AR models and Yule-Walker  equations.
 * [DowjonesAR1D1.Rmd](DowjonesAR1D1.Rmd)  selecting an ARIMA(p,d,q) for  a time series and computing forecasts.
+* [MAmodels.Rmd](MAmodels.Rmd) MA(1) models using arima.sim
 
 R file for teaching forecasting 
 * [SimulationSeasonalArima.R](SimulationSeasonalArima.R) allows to create seasonal arima time series and see their resulting ACF and PACF plots. 
