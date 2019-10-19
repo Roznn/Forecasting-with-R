@@ -1,0 +1,69 @@
+---
+title: "MA models  "
+author: "Rozenn Dahyot - https://www.scss.tcd.ie/Rozenn.Dahyot/"
+date: "18 October 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## Definition Moving Average model order 1
+
+An MA(1) is defined as: 
+$$
+y_t = \psi_0 +\psi_1 \ \epsilon_{t-1} +\epsilon_t
+$$
+with the following assumptions $\forall t$:
+
+- $\mathbb{E}[\epsilon_t]= 0$, $\mathbb{V}[\epsilon_t]= \sigma_{\epsilon}^2$ and the errors $\epsilon_{t_1}$ and $\epsilon_{t_2}$ are independent $\forall t_1\neq t_2$.
+- $\mathbb{E}[y_t]= \mu_y=\psi_0$ (stationary in mean).
+- $\mathbb{V}[y_t]= \sigma_y^2=\gamma_0=\mathbb{E}[ (\psi_1 \ \epsilon_{t-1} +\epsilon_t) (\psi_1 \ \epsilon_{t-1} +\epsilon_t) ]=(\psi_1^2+1)\ \sigma_{\epsilon}^2$ (stationary in variance).
+- The covariance between $y_t$ and $y_{t-k}$ is:
+$$
+\mathbb{C}\text{ov}[y_t,y_{t-k}]=\gamma_k=\mathbb{E}[(y_t-\mu_y)(y_{t-k}-\mu_y)]=\mathbb{E}[(\psi_1 \ \epsilon_{t-1} +\epsilon_t) (\psi_1 \ \epsilon_{t-1-k} +\epsilon_{t-k})]
+$$
+hence $\gamma_k=0$ for $k>1$, and $\gamma_1=\psi_1 \ \sigma_{\epsilon}^2$.
+
+
+consequently the autocorrelation between $y_t$ and $y_{t-k}$ is $ACF(0)=1$, $ACF(1)=\frac{\psi_1}{\psi_1^2+1}$ and $ACF(k)=0$ for $k>1$.
+
+## ACF and PACF of MA(1)
+
+In * arima.sim* the model simulated below corresponds to 
+$$
+y_{t}= \psi_1 \ \epsilon_{t-1}  + \epsilon_{t}
+$$
+with $\psi_1=0.8$.
+
+```{r,warning=FALSE, message=FALSE}
+require(fma)
+myts<-arima.sim(n=100000,list(order = c(0,0,1),ma = c(0.8)), sd = sqrt(0.1796))
+
+# amplitude of ACF(1) usin
+acf1=0.8/(1+0.8^2)
+acf1
+
+tsdisplay(myts)
+
+# fitting the model MA(1) imposing $\mu_y=0$ since arima.sim uses  $\mu_y=0$
+Arima(myts,order=c(0,0,1),include.mean = FALSE)
+
+```
+
+- the ACF has one major peak at lag $k=1$ and then all ACF for $k>1$ are 0s.
+- the PACF shows *damped sine wave* pattern which can be explained when rewritting the MA(1) as an AR($\infty$).
+
+
+Read   https://otexts.com/fpp2/MA.html about $AR(p)\equiv MA(\infty)$ and $MA(q)\equiv AR(\infty)$.
+
+
+
+
+
+
+
+
+
