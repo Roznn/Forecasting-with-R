@@ -16,7 +16,8 @@ R file for teaching forecasting
 Information relating to my forecasting class (including [lecturenotes](https://www.scss.tcd.ie/Rozenn.Dahyot/ST3010/RzDTimeSeriesForecasting.pdf) ) can be found in the teaching section of my website https://www.scss.tcd.ie/Rozenn.Dahyot/ . Please cite the following if you find these materials useful:
 
 ```
-[1] Applied Forecasting. Rozenn Dahyot, Lecturenotes, Trinity College Dublin Ireland. ( https://github.com/Roznn/Forecasting-with-R/ )
+[1] Applied Forecasting. Rozenn Dahyot, Lecturenotes, Trinity College Dublin Ireland. 
+(https://github.com/Roznn/Forecasting-with-R/)
 ```
 
 ![Rendering of the html report](ImageIllustrationGithub.png)
