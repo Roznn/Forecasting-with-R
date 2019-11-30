@@ -13,6 +13,9 @@ Other Rmd files
 R file for teaching forecasting 
 * [SimulationSeasonalArima.R](SimulationSeasonalArima.R) allows to create seasonal arima time series and see their resulting ACF and PACF plots. 
 
-Information relating to my forecasting class (including lecturenotes) can be found in the teaching section of my website https://www.scss.tcd.ie/Rozenn.Dahyot/ .
+Information relating to my forecasting class (including [https://www.scss.tcd.ie/Rozenn.Dahyot/ST3010/RzDTimeSeriesForecasting.pdf](lecturenotes) can be found in the teaching section of my website https://www.scss.tcd.ie/Rozenn.Dahyot/ . Please cite the following if you 
+'''
+Applied Forecasting. Rozenn Dahyot, Lecturenotes, Trinity College Dublin Ireland.
+'''
 
 ![Rendering of the html report](ImageIllustrationGithub.png)
