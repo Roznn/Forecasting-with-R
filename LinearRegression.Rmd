@@ -1,0 +1,169 @@
+---
+title: "Linear Regression"
+author: "Rozenn Dahyot - https://Roznn.github.io"
+date: "2020"
+output:
+  rmdformats::readthedown:
+    highlight: kate
+---
+
+
+```{r setup, echo=FALSE, cache=FALSE}
+library(knitr)
+library(rmdformats)
+
+## Global options
+options(max.print="75")
+opts_chunk$set(echo=TRUE,
+	             cache=TRUE,
+               prompt=FALSE,
+               tidy=TRUE,
+               comment=NA,
+               message=FALSE,
+               warning=FALSE)
+opts_knit$set(width=75)
+```
+
+
+
+
+
+
+
+
+# Dataset
+
+
+In this dataset (taken from: *An Introduction to Generalized Linear Models, A. J. Dobson & A. G. Barnett, 3rd edition p.96*), the response variable $y$ corresponds to the percentage of total calories obtained from complex carbohydrates for 20 male insulin-dependent diabetics who have been on a high carbohydrate diet for six months. Additional information is collected about the individuals taking part in the study including age (in years), weight (relative to ideal weight) and other calories intake from protein (as percentage).
+
+
+
+
+```{r message=FALSE}
+
+carbohydrate=c(33,40,37,27,30,43,34,48,30,38,50,51,30,36,41,42,46,24,35,37) # response vector
+age=c(33,47,49,35,46,52,62,23,32,42,31,61,63,40,50,64,56,61,48,28)
+weight=c(100,92,135,144,140,101,95,101,98,105,108,85,130,127,109,107,117,100,118,102)
+protein=c(14,15,18,12,15,15,14,17,15,14,17,19,19,20,15,16,18,13,18,14)
+
+
+
+```
+
+# Fitting a linear model with R functions
+
+The   R functions *lm()* and *glm()* can be used to fit a linear model of the form
+$$
+y_{\text{carbohydrate}}=\underbrace{\beta_0+\beta_1 \ x_{\text{age}}+\beta_2 \ x_{\text{weight}} + \beta_3 \ x_{\text{protein}}}_{\hat{y}}+\epsilon
+$$
+Once estimates for parameters $\beta$s are available, then a predictor $\hat{y}$ can be computed for any inputs $(x_{\text{age}},x_{\text{weight}},x_{\text{protein}})$.
+
+
+
+```{r message=FALSE}
+#using lm
+
+res.lm=lm(carbohydrate~age+weight+protein)
+summary(res.lm)
+
+
+#using glm
+res.glm=glm(carbohydrate~age+weight+protein,family=gaussian)
+summary(res.glm)
+
+
+```
+
+
+# Fitting a linear model using linear algebra
+
+This code used linear algebra to recover some of the results found by the R functions *lm()* and *glm()*. 
+
+
+
+We define matrix $\mathrm{X}$ with the explanatory variables, and vector $\mathbf{y}$ collecting the responses.
+
+```{r message=FALSE}
+X=matrix(1,20,4)
+X[,1]=c(1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1)
+X[,2]=age
+X[,3]=weight
+X[,4]=protein
+Y=carbohydrate
+```
+
+
+## Least squares solution
+
+The least square solution is computed with:
+$$
+\hat{\beta}=(\mathrm{X}^{T}\mathrm{X})^{-1} \ \mathrm{X}^{T} \mathbf{y}
+$$
+
+Using R, notice how we recover the same estimates computed with R function functions *lm()* and *glm()*:
+```{r message=FALSE}
+
+BetaHat=solve(t(X)%*%X)%*%t(X)%*%carbohydrate
+BetaHat
+```
+
+
+## Residual standard error
+
+
+The Residual Standard Error (RSE) reported by the funtion *lm()* can be also computed using linear algebra as follow:
+$$
+RSE=\sqrt{\frac{SSE}{n-p}}
+$$
+with $n$ is the number of observations and $p$ is the degree of freedom of the model (i.e. number of parameters $\lbrace \beta_0,\beta_1,\beta_2,\beta_3\rbrace$ to estimate in the model).
+The Sum of Square Error (SSE) is computed as :
+$$
+SSE=\sum_{i=1}^n (y_{i}-\hat{y}_i)^2
+$$
+
+
+```{r message=FALSE}
+fitted =X %*% BetaHat
+residuals=carbohydrate-fitted
+SSE=t(residuals)%*%residuals # Sum of Square Error
+sigmahatsq=SSE/(length(carbohydrate)-length(BetaHat))
+#Residual standard error as reported by lm()
+sqrt(sigmahatsq)
+```
+
+
+## Standard Errors of estimated parameters
+
+
+The uncertainty associated with the parameters $\beta$s (Std. Error as reported with *lm()* and *glm()*) can also be computed: 
+
+
+```{r message=FALSE}
+# uncertainty of BetaHat (standard error)
+CovBetaHat=solve(t(X)%*%X)*as.numeric(sigmahatsq)
+Std.Error.BetaHat=sqrt(diag(CovBetaHat))
+Std.Error.BetaHat
+```
+
+
+## Multiple R-squared
+
+Similarly R-squared (as reported with *lm()*) can be computed:
+$$
+R^2=\frac{\sum_{i=1}^n (\hat{y}_{i}-\bar{y})^2}{\sum_{i=1}^n (y_{i}-\bar{y})^2}
+$$
+using the sample mean $\bar{y}=\frac{1}{n}\sum_{i=1}^n y_{i}$.
+
+```{r message=FALSE}
+#Multiple R-squared: (coefficient of determination) 
+S0=sum((carbohydrate-mean(carbohydrate))*(carbohydrate-mean(carbohydrate)))
+Rsq=(S0-SSE)/S0
+Rsq
+
+
+S1=sum((fitted-mean(carbohydrate))*(fitted-mean(carbohydrate)))
+Rsq2<-S1/S0
+Rsq2
+
+```
+
