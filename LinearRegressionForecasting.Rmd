@@ -1,0 +1,81 @@
+---
+title: "Forecasting with tslm()"
+author: "Rozenn Dahyot  https://Roznn.github.io"
+date: "2020"
+output:
+  rmdformats::readthedown:
+    highlight: kate
+---
+
+
+```{r setup, echo=FALSE, cache=FALSE}
+library(knitr)
+library(rmdformats)
+
+## Global options
+options(max.print="75")
+opts_chunk$set(echo=TRUE,
+	             cache=FALSE,
+               prompt=FALSE,
+               tidy=TRUE,
+               comment=NA,
+               message=FALSE,
+               warning=FALSE)
+opts_knit$set(width=75)
+```
+
+
+# Example with *beer* time series
+
+
+This example below shows  *lm()* and *tslm()* functions used to fit the beer  time series that has a seasonal pattern and no trend. We note that *tslm()* creates automatically the indicator variables for modelling the seasonal patterns.
+
+The model fitted corresponds to:
+$$
+\text{beer}_t=\underbrace{\beta_0 + \beta_2 \ \text{Feb}_t+ \cdots+\beta_{12} \ \text{Dec}_t }_{\widehat{\text{beer}}_t}+\epsilon_t
+$$
+
+
+```{r message=FALSE}
+require(fma)
+
+
+Dec = rep(c(0, 0, 0, 0,0,0, 0, 0,0,0, 0,1), length.out=length(beer) )
+Feb = rep(c(0,1, 0, 0,0,0, 0, 0,0,0, 0,0), length.out=length(beer) )
+Mar = rep(c(0, 0, 1, 0,0,0, 0, 0,0,0, 0,0), length.out=length(beer) )
+Apr = rep(c(0, 0, 0, 1,0,0, 0, 0,0,0, 0,0), length.out=length(beer) )
+May = rep(c(0, 0, 0, 0,1,0, 0, 0,0,0, 0,0), length.out=length(beer) )
+Jun = rep(c(0, 0, 0, 0,0,1, 0, 0,0,0, 0,0), length.out=length(beer) )
+Jul = rep(c(0, 0, 0, 0,0,0, 1, 0,0,0, 0,0), length.out=length(beer) )
+Aug = rep(c(0, 0, 0, 0,0,0, 0, 1,0,0, 0,0), length.out=length(beer) )
+Sep= rep(c(0, 0, 0, 0,0,0, 0, 0,1,0, 0,0), length.out=length(beer) )
+Oct= rep(c(0, 0, 0, 0,0,0, 0, 0,0,1, 0,0), length.out=length(beer) )
+Nov= rep(c(0, 0, 0, 0,0,0, 0, 0,0,0, 1,0), length.out=length(beer) )
+
+
+lm.beer<-lm(beer~Feb+Mar+Apr+May+Jun+Jul+Aug+Sep+Oct+Nov+Dec)
+summary(lm.beer)
+
+tslm.beer<-tslm(beer~ season)
+
+summary(tslm.beer)
+plot(forecast(tslm.beer, h=20))
+
+```
+
+# Example with *airpass* time series
+
+The model fitted corresponds to:
+$$
+\text{airpass}_t=\underbrace{\beta_0 + \beta_1 \ t + \beta_2 \ \text{Feb}_t+ \cdots+\beta_{12} \ \text{Dec}_t }_{\widehat{\text{beer}}_t}+\epsilon_t
+$$
+
+```{r message=FALSE}
+
+
+tslm.airpass<-tslm(airpass~ trend + season)
+
+summary(tslm.airpass)
+plot(forecast(tslm.airpass, h=20))
+
+```

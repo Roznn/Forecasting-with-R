@@ -15,7 +15,7 @@ library(rmdformats)
 ## Global options
 options(max.print="75")
 opts_chunk$set(echo=TRUE,
-	             cache=TRUE,
+	             cache=FALSE,
                prompt=FALSE,
                tidy=TRUE,
                comment=NA,
