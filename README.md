@@ -9,7 +9,7 @@ Please cite the following if you find any of these materials useful:
 
 
 
-## Information and Lecturenotes
+## Information and Lecturenotes (*.tex and pdf)
 
 Information relating to my forecasting class can be found in my [webpage](https://www.scss.tcd.ie/Rozenn.Dahyot/RzDSTU33010.html).
 
