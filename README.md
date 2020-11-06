@@ -1,4 +1,4 @@
-# Forecasting-with-R
+# Applied Forecasting and Time Series with R
 
 Please cite the following if you find any of these materials useful:
 
@@ -9,7 +9,7 @@ Please cite the following if you find any of these materials useful:
 
 
 
-## Applied Forecasting and Time Series
+## Information and Lecturenotes
 
 Information relating to my forecasting class can be found in my [webpage](https://www.scss.tcd.ie/Rozenn.Dahyot/RzDSTU33010.html).
 
@@ -18,7 +18,7 @@ In addition to R/Rmd files, LaTeX source (*.tex) and PDF files are available on 
 
 
 
-## Files in this repo
+## R and Rmd Files 
 
 Rmd file for teaching forecasting 
 * [TemplateForecasting.Rmd](TemplateForecasting.Rmd) is an example of Rmd file that can be processed with RStudio. It is an example of analysis of a time series with Holt-Winters algorithms.  
