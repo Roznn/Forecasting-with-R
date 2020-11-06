@@ -1,5 +1,13 @@
 # Forecasting-with-R
 
+Please cite the following if you find any of these materials useful:
+
+```
+[1] Applied Forecasting. Rozenn Dahyot, Lecturenotes, Trinity College Dublin Ireland. 
+(https://github.com/Roznn/Forecasting-with-R/)
+```
+
+
 
 ## Applied Forecasting and Time Series
 
@@ -7,12 +15,7 @@ Information relating to my forecasting class can be found in my [webpage](https:
 
 In addition to R/Rmd files, LaTeX source (*.tex) and PDF files are available on [Overleaf](https://www.overleaf.com/read/xyvmdnrgzjct) 
 
-Please cite the following if you find any of these materials useful:
 
-```
-[1] Applied Forecasting. Rozenn Dahyot, Lecturenotes, Trinity College Dublin Ireland. 
-(https://github.com/Roznn/Forecasting-with-R/)
-```
 
 
 ## Files in this repo
