@@ -3,12 +3,17 @@
 
 ## Applied Forecasting and Time Series
 
-Information relating to my forecasting class (including [lecturenotes](Lecturenotes/RzDTimeSeriesForecasting.pdf) ) can be found in the teaching section of my website https://www.scss.tcd.ie/Rozenn.Dahyot/ . Please cite the following if you find any of these materials useful:
+Information relating to my forecasting class can be found in my [webpage](https://www.scss.tcd.ie/Rozenn.Dahyot/RzDSTU33010.html).
+
+In addition to R/Rmd files, LaTeX source (*.tex) and PDF files are available on [Overleaf](https://www.overleaf.com/read/xyvmdnrgzjct) 
+
+Please cite the following if you find any of these materials useful:
 
 ```
 [1] Applied Forecasting. Rozenn Dahyot, Lecturenotes, Trinity College Dublin Ireland. 
 (https://github.com/Roznn/Forecasting-with-R/)
 ```
+
 
 ## Files in this repo
 
