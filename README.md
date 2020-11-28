@@ -8,12 +8,16 @@ Please cite the following if you find any of these materials useful:
 ```
 
 
+## Information
 
-## Information and Lecturenotes (*.tex and pdf)
+
+Keywords: time series, time series visualisation, Holt-Winters algorithms, ARIMA models, forecasting, prediction intervals
+
+## Lecturenotes (*.tex and pdf)
 
 Information relating to my forecasting class can be found in my [webpage](https://www.scss.tcd.ie/Rozenn.Dahyot/RzDSTU33010.html).
 
-In addition to R/Rmd files, LaTeX source (*.tex) and PDF files are available on [Overleaf](https://www.overleaf.com/read/xyvmdnrgzjct) 
+ LaTeX source (*.tex) and PDF files for the lecturenotes are available on [Overleaf](https://www.overleaf.com/read/xyvmdnrgzjct) 
 
 
 
@@ -26,12 +30,12 @@ Rmd file for teaching forecasting
 * some help is provided in the file [HelpTemplateForecastingRmd.pdf](HelpTemplateForecastingRmd.pdf)
 
 Other Rmd files (with their corresponding html file)
-* [TSD.Rmd](TSD.Rmd)  time series differencing:  illustrations using arima.sim
-* [ARmodels.Rmd](ARmodels.Rmd) AR models and Yule-Walker  equations.
-* [DowjonesAR1D1.Rmd](DowjonesAR1D1.Rmd)  selecting an ARIMA(p,d,q) for  a time series and computing forecasts.
-* [MAmodels.Rmd](MAmodels.Rmd) MA(1) models using arima.sim
-* [LinearRegression.Rmd](LinearRegression.Rmd) Example of Linear Regression
-* [LinearRegressionForecasting.Rmd](LinearRegressionForecasting.Rmd) Example of Linear Regression for time series 
+* [TSD.Rmd](TSD.Rmd) and [TSD.html](TSD.html)   time series differencing:  illustrations using arima.sim 
+* [ARmodels.Rmd](ARmodels.Rmd) and [ARmodels.html](ARmodels.html) AR models and Yule-Walker  equations.
+* [DowjonesAR1D1.Rmd](DowjonesAR1D1.Rmd) and [DowjonesAR1D1.html](DowjonesAR1D1.html)  selecting an ARIMA(p,d,q) for  a time series and computing forecasts.
+* [MAmodels.Rmd](MAmodels.Rmd) and [MAmodels.html](MAmodels.html) MA(1) models using arima.sim
+* [LinearRegression.Rmd](LinearRegression.Rmd) and [MAmodels.html](MAmodels.html) Example of Linear Regression
+* [LinearRegressionForecasting.Rmd](LinearRegressionForecasting.Rmd) and [MAmodels.html](MAmodels.html) Example of Linear Regression for time series 
 
 R file for teaching forecasting 
 * [SimulationSeasonalArima.R](SimulationSeasonalArima.R) allows to create seasonal arima time series and see their resulting ACF and PACF plots. 
