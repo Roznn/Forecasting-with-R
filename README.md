@@ -2,7 +2,6 @@
 
 
 
-
 ## Information
 
 Please cite the following if you find any of these materials useful:
@@ -46,4 +45,5 @@ R file for teaching forecasting
 
 ## References
 
-* [Forecasting: principles and practice](http://otexts.com/fpp/) online book by R. Hyndman and G. Athanasopoulos
+* [Forecasting: principles and practice](http://otexts.com/fpp/) by R. Hyndman and G. Athanasopoulos (online book)
+*  The Holt-Winters Approach to Exponential Smoothing: 50 Years Old and Going Strong, Paul Goodwin,  Foresight: The International Journal of Applied Forecasting 2010 
