@@ -1,5 +1,10 @@
 # Applied Forecasting and Time Series with R
 
+
+
+
+## Information
+
 Please cite the following if you find any of these materials useful:
 
 ```
@@ -8,17 +13,13 @@ Please cite the following if you find any of these materials useful:
 ```
 
 
-## Information
-
-
 Keywords: time series, time series visualisation, Holt-Winters algorithms, ARIMA models, forecasting, prediction intervals
 
 ## Lecturenotes (*.tex and pdf)
 
 Information relating to my forecasting class can be found in my [webpage](https://www.scss.tcd.ie/Rozenn.Dahyot/RzDSTU33010.html).
 
- LaTeX source (*.tex) and PDF files for the lecturenotes are available on [Overleaf](https://www.overleaf.com/read/xyvmdnrgzjct) 
-
+LaTeX source (*.tex) and PDF files for the lecturenotes are available on [Overleaf](https://www.overleaf.com/read/xyvmdnrgzjct) 
 
 
 
@@ -41,5 +42,9 @@ R file for teaching forecasting
 * [SimulationSeasonalArima.R](SimulationSeasonalArima.R) allows to create seasonal arima time series and see their resulting ACF and PACF plots. 
 
 
-
 ![Rendering of the html report](ImageIllustrationGithub.png)
+
+
+## References
+
+* [Forecasting: principles and practice](http://otexts.com/fpp/) online book by R. Hyndman and G. Athanasopoulos
