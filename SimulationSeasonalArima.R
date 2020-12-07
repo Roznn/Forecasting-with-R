@@ -1,8 +1,8 @@
 ## install packages
 ## Simulation of Seasonal ARIMA models
 
-install.packages("fma")
-install.packages("gsarima")
+#install.packages("fma")
+#install.packages("gsarima")
 
 ###############################
 # load package in memory
@@ -17,9 +17,9 @@ ar_p<-c(0)    # AR(p=0)
 ma_q<-c(0)    # MA(q=0)
 d<-c(0)       # differencing I(d=0) 
 
-sar_P<-c(0.5) # Seasonal AR(P=1)
+sar_P<-c(0) # Seasonal AR(P=1)
 sma_Q<-c(0)   # Seasonal MA(Q=0)
-D<-c(0)       # seasonal differencing I(D=0)
+D<-c(1)       # seasonal differencing I(D=0)
 frequency<-12   # period
 
 ##########################################
