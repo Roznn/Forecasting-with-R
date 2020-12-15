@@ -44,4 +44,4 @@ R file for teaching forecasting
 *  The Holt-Winters Approach to Exponential Smoothing: 50 Years Old and Going Strong, Paul Goodwin,  Foresight: The International Journal of Applied Forecasting 2010 
 
 ## Author: 
-[Rozenn Dahyot](https://roznn.github.io/)
+[Rozenn Dahyot](https://twitter.com/RDahyot)
