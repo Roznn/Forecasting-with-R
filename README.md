@@ -1,26 +1,25 @@
 # Applied Forecasting and Time Series with R
 
-
+![Rendering of the html report](ImageIllustrationGithub.png)
 
 ## Information
 
+This github repo shares some of the material used for teaching *Applied Forecasting* (5 ECTS) in Trinity College Dublin (2008-2020) for Sophisters.
 Please cite the following if you find any of these materials useful:
 
 ```
-[1] Applied Forecasting. Rozenn Dahyot, Lecturenotes, Trinity College Dublin Ireland. 
+Applied Forecasting, 
+Rozenn Dahyot, Lecturenotes, Trinity College Dublin Ireland. 
 (https://github.com/Roznn/Forecasting-with-R/)
 ```
 
-
-Keywords: time series, time series visualisation, Holt-Winters algorithms, ARIMA models, forecasting, prediction intervals
+**Keywords:** time series, time series visualisation, Holt-Winters algorithms, ARIMA models, forecasting, prediction intervals
 
 ## Lecturenotes (*.tex and pdf)
 
 Information relating to my forecasting class can be found in my [webpage](https://www.scss.tcd.ie/Rozenn.Dahyot/RzDSTU33010.html).
 
 LaTeX source (*.tex) and PDF files for the lecturenotes are available on [Overleaf](https://www.overleaf.com/read/xyvmdnrgzjct) 
-
-
 
 ## R and Rmd Files 
 
@@ -39,11 +38,10 @@ Other Rmd files (with their corresponding html file)
 R file for teaching forecasting 
 * [SimulationSeasonalArima.R](SimulationSeasonalArima.R) allows to create seasonal arima time series and see their resulting ACF and PACF plots. 
 
-
-![Rendering of the html report](ImageIllustrationGithub.png)
-
-
 ## References
 
 * [Forecasting: principles and practice](http://otexts.com/fpp/) by R. Hyndman and G. Athanasopoulos (online book)
 *  The Holt-Winters Approach to Exponential Smoothing: 50 Years Old and Going Strong, Paul Goodwin,  Foresight: The International Journal of Applied Forecasting 2010 
+
+## Author: 
+[Rozenn Dahyot](https://roznn.github.io/)
