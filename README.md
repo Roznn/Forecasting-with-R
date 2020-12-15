@@ -9,7 +9,7 @@ Please cite the following if you find any of these materials useful:
 
 ```
 Applied Forecasting, 
-Rozenn Dahyot, Lecturenotes, Trinity College Dublin Ireland. 
+Rozenn Dahyot, Lecturenotes, Trinity College Dublin Ireland 2020. 
 (https://github.com/Roznn/Forecasting-with-R/)
 ```
 
