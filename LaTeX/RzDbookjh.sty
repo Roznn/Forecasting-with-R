@@ -1,0 +1,94 @@
+
+%=============== shaded and non-shaded theorems =============
+% The shadethm package allows, say, \begin{theorem} .. \end{theorem} 
+% material to always come out shaded. 
+\RequirePackage{shadethm}
+
+% Theorem style for textual matters: remarks, etc.
+\theoremstyle{plain}
+\newtheoremstyle{text}%
+{\thm@preskip}{\thm@postskip}%
+{\normalfont}{0pt}{\bfseries}{}{ }%
+{\arabic{section}.\arabic{shadetheorem}\ \thmname{#1}\ \thmnote{(#3)\ }} %
+\theoremstyle{text} % the theorem environments below will use the `text' style
+
+% shaded theorems
+\newshadetheorem{theorem}{Theorem}[section]
+\newshadetheorem{proposition}[theorem]{Proposition}
+\newshadetheorem{axiom}[theorem]{Axiom}
+\newshadetheorem{axioms}[theorem]{Axioms}
+\newshadetheorem{definition}[theorem]{Definition}
+\newshadetheorem{notation}[theorem]{Notation}
+\newshadetheorem{stupidkludge}[theorem]{Theorem}
+% unshaded theorems
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{note}[theorem]{Note} %conflicts with seminar
+%\newtheorem{comment}[theorem]{Comment}
+% I like the theorems to only list the subsection and the theorem number
+%\newcommand{\thetheorem}{\arabic{subsection}.\arabic{theorem}}
+%------------SHADING colors and sizes
+\setlength{\shadeboxrule}{.4pt} % make it 0pt to eliminate the rule altogether
+\setlength{\shadedtextwidth}{\textwidth}
+\addtolength{\shadedtextwidth}{-2\shadeboxsep}
+\addtolength{\shadedtextwidth}{-2\shadeboxrule}
+%\ifhrefout
+  \definecolor{shadethmcolor}{rgb}{0.9412,.9412,1.0000} % 
+  \definecolor{shaderulecolor}{rgb}{0.1529,0.2510,0.5451} % RoyalBlue 
+  \definecolor{lightergray}{gray}{0.95}
+%\else
+ % \definecolor{shadethmcolor}{gray}{0.94}  % Regular gray, dark enough to copy
+ % \definecolor{shaderulecolor}{gray}{0.94}
+ % \definecolor{lightergray}{gray}{0.95}
+%\fi
+%end SHADING
+
+
+
+
+
+
+%================================================================
+% FOOTNOTES
+% Footnotes: Use footnote symbols (not numbers) on a per-page basis.
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\RequirePackage{footnpag}
+% That package is only used for this purpose.
+\newcommand{\appendrefs}[1]{\footnote{
+                             More information on #1 is in the appendix.} }
+
+
+
+
+\newenvironment{inlinegraphic}{\begin{center}}{\end{center}} %
+\newcommand{\scannedpicture}[1]{%
+%\ifpdf
+%  \includegraphics{#1.pdf}
+%\else
+  \includegraphics{#1.jpg}
+%\fi 
+}
+
+%=========================================
+% Enumeration environments
+% Changed to support new kind of enumeration environment jh 90-7-10
+\def\labelenumi{(\arabic{enumi})}
+\def\theenumi{\arabic{enumi}}
+\def\labelenumii{\(\bullet\)}
+\def\theenumii{\alph{enumii}}
+\def\p@enumii{\theenumi}
+\def\labelenumiii{(\roman{enumiii})}
+\def\theenumiii{\roman{enumiii}}
+\def\p@enumiii{\theenumi(\theenumii)}
+\def\labelenumiv{\bf --}
+\def\theenumiv{\Alph{enumiv}}
+\def\p@enumiv{\p@enumiii\theenumiii}
+
+\def\labelitemi{$\bullet$}
+\def\labelitemii{\bf --}
+\def\labelitemiii{$\ast$}
+\def\labelitemiv{$\cdot$}
+

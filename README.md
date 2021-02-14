@@ -17,9 +17,9 @@ Rozenn Dahyot, Lecturenotes, Trinity College Dublin Ireland 2020.
 
 ## Lecturenotes (*.tex and pdf)
 
-Information relating to my forecasting class can be found in my [webpage](https://www.scss.tcd.ie/Rozenn.Dahyot/RzDSTU33010.html).
 
-LaTeX source (*.tex) and PDF files for the lecturenotes are available on [Overleaf](https://www.overleaf.com/read/xyvmdnrgzjct) 
+LaTeX source `*.tex`  and PDF files for the lecturenotes can be seen on [Overleaf](https://www.overleaf.com/read/xyvmdnrgzjct) and 
+are as well in the Folder [LaTeX](LaTeX/)
 
 ## R and Rmd Files 
 
@@ -44,4 +44,4 @@ R file for teaching forecasting
 *  The Holt-Winters Approach to Exponential Smoothing: 50 Years Old and Going Strong, Paul Goodwin,  Foresight: The International Journal of Applied Forecasting 2010 
 
 ## Author: 
-[Rozenn Dahyot](https://twitter.com/RDahyot)
+[Rozenn Dahyot](https://roznn.github.io/)
