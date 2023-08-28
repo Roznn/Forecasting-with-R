@@ -19,7 +19,7 @@ Rozenn Dahyot, Lecturenotes, Trinity College Dublin Ireland 2020.
 
 
 LaTeX source `*.tex`  and PDF files for the lecturenotes can be seen on [Overleaf](https://www.overleaf.com/read/xyvmdnrgzjct) and 
-are as well in the Folder [LaTeX](LaTeX/)
+are as well in the Folder [LaTeX](https://github.com/Roznn/Forecasting-with-R/tree/master/LaTeX)
 
 ## R and Rmd Files 
 
